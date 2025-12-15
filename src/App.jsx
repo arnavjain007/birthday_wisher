@@ -5,11 +5,20 @@ import './App.css'
 
 function App() {
   const [user,setUser]=useState(null);
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
 
   return (
     <>
-      <UserContext.Provider value={{user,setUser}}>
-        <Login/>
+      <UserContext.Provider value={{user,setUser,isLoggedIn,setIsLoggedIn}}>
+        {!isLoggedIn ? 
+        <>
+          <Login className="bg-pink-400"/>
+        </>
+        :
+        <>
+          <div>Happy Birthday ,{user.given_name}</div>
+        </>
+        }
       </UserContext.Provider>
     </>
   )
